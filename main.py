@@ -19,7 +19,7 @@ k=0
 
 while not window_should_close() :
 
-    begin_drawing()
+    begin_drawing() 
     clear_background(BLACK)
 
     # animation du serpent et du fruits
