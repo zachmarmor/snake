@@ -74,7 +74,7 @@ while not window_should_close() :
         
         if super_fruit : 
              tps+=1
-             draw_rectangle(loc_s_fruit[0]*SIDE,loc_s_fruit[1]*SIDE,SIDE,SIDE, YELLOW)
+             draw_rectangle(loc_s_fruit[0]*SIDE,loc_s_fruit[1]*SIDE,SIDE,SIDE, GOLD)
 
              if tps>= 300 : # On limite le temps pendant lequel reste le super fruit 
                   super_fruit = False
@@ -101,7 +101,7 @@ while not window_should_close() :
 
         
     if perdu : 
-        draw_text(f"game over \n votre score était de : {score} \n appuyez sur entrer pour recommencer", 10, HEIGHT*HEIGHT//2, 30,WHITE)
+        draw_text(f"GAME OVER \n Votre score était de : {score} \n Appuyez sur entrer pour recommencer", 10, HEIGHT*HEIGHT//2, 30,WHITE)
 
         if is_key_pressed(KEY_ENTER): 
             # réinitialisation
