@@ -16,9 +16,9 @@ perdu=False
 fruit = [random.randint(0,WIDTH-1),random.randint(0,HEIGHT-1)]
 loc_s_fruit= [random.randint(0,WIDTH-1),random.randint(0,HEIGHT-1)] #position super fruit
 super_fruit=False
+super_fruit_mangé = False
 score =0
 k=0
-i= 0
 tps = 0 
 best_score =0
 while not window_should_close() :
@@ -58,12 +58,19 @@ while not window_should_close() :
             score=score+100
             snake=snake+[new_head]
             super_fruit = False
+            super_fruit_mangé = True 
             tps=0
             loc_s_fruits_fruit =[random.randint(0,WIDTH-1), random.randint(0,HEIGHT-1)]
             while loc_s_fruit in snake : # on empêche le fruit de se créer sur le serpent 
                  loc_s_fruit =[random.randint(0,WIDTH-1), random.randint(0,HEIGHT-1)]
 
-        
+        if super_fruit_mangé : 
+             j+=1 # conteur pour continuer de faire grossir le serpent de 3 carreaux au total
+             snake=snake[:]
+             snake=snake+[new_head]
+             if j ==3:
+                  j=0
+                  super_fruit_mangé =False
         else : 
             snake=snake[1:]
             snake=snake+[new_head]
@@ -77,13 +84,14 @@ while not window_should_close() :
              tps+=1
              draw_rectangle(loc_s_fruit[0]*SIDE,loc_s_fruit[1]*SIDE,SIDE,SIDE, GOLD)
 
-             if tps>= 300 : # On limite le temps pendant lequel reste le super fruit 
+             if tps>= 200 : # On limite le temps pendant lequel reste le super fruit 
                   super_fruit = False
                   tps=0
 
         if k%1500==0 : # On fait apparaître un super fruit de temps en temps 
              super_fruit = True 
              tps=0
+             j=0
 
         for i,(x,y) in enumerate(snake): #serpent
             color=GREEN if i==len(snake)-1 else DARKGREEN
@@ -113,10 +121,14 @@ while not window_should_close() :
             # réinitialisation
             snake=[[1,1],[2,1],[3,1]]
             vitesse=[1,0]
-            perdu= False
+            perdu=False
             fruit = [random.randint(0,WIDTH-1),random.randint(0,HEIGHT-1)]
+            loc_s_fruit= [random.randint(0,WIDTH-1),random.randint(0,HEIGHT-1)] #position super fruit
+            super_fruit=False
+            super_fruit_mangé = False
             score =0
-            k=0    
+            k=0
+            tps = 0     
 
         
 
