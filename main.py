@@ -20,6 +20,7 @@ score =0
 k=0
 i= 0
 tps = 0 
+best_score =0
 while not window_should_close() :
 
     begin_drawing() 
@@ -101,9 +102,14 @@ while not window_should_close() :
 
         
     if perdu : 
-        draw_text(f"GAME OVER \n Votre score était de : {score} \n Appuyez sur entrer pour recommencer", 10, HEIGHT*HEIGHT//2, 30,WHITE)
+        if score > best_score:
+            draw_text(f"GAME OVER \n Votre score était de : {score}\n NOUVEAU RECORD ! \n Appuyez sur entrer pour recommencer", 10, HEIGHT*HEIGHT//2, 30,WHITE)
+        else : 
+             draw_text(f"GAME OVER \n Votre score était de : {score} \n Appuyez sur entrer pour recommencer", 10, HEIGHT*HEIGHT//2, 30,WHITE)
 
         if is_key_pressed(KEY_ENTER): 
+            if score > best_score:
+                 best_score=score
             # réinitialisation
             snake=[[1,1],[2,1],[3,1]]
             vitesse=[1,0]
