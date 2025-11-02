@@ -60,7 +60,7 @@ while not window_should_close() :
             super_fruit = False
             super_fruit_mangé = True 
             tps=0
-            loc_s_fruits =[random.randint(0,WIDTH-1), random.randint(0,HEIGHT-1)]
+            loc_s_fruit =[random.randint(0,WIDTH-1), random.randint(0,HEIGHT-1)]
             while loc_s_fruit in snake : # on empêche le fruit de se créer sur le serpent 
                  loc_s_fruit =[random.randint(0,WIDTH-1), random.randint(0,HEIGHT-1)]
 
